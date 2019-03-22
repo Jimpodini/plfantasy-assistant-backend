@@ -1,4 +1,4 @@
 {
 	"db": "mongodb://localhost/plfantasy",
-	"port": 3900
+	"port": "3900"
 }
