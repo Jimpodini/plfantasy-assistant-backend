@@ -21,8 +21,6 @@ router.post('/', async (req, res) => {
 			'https://api.the-odds-api.com/v3/odds?sport=soccer_epl&region=uk&mkt=h2h&apiKey=1ce4799731f1103191085e8481c0ff68'
 		);
 
-		console.log(odds.data.data);
-
 		const allGames = odds.data.data;
 		let allOdds = [];
 
@@ -39,7 +37,7 @@ router.post('/', async (req, res) => {
 			allOdds = [ ...allOdds, object ];
 		}
 
-		Odds.collection.insert(allOdds);
+		Odds.collection.insertMany(allOdds);
 
 		res.send(allOdds);
 	} catch (err) {
