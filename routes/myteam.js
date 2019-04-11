@@ -25,6 +25,11 @@ router.get('/', async (req, res) => {
 	request(options, function(error, response, body) {
 		if (error) throw new Error(error);
 
+		if (response.headers['set-cookie'] === undefined) {
+			res.sendStatus(400);
+			return;
+		}
+
 		////// hej
 		const cookie = response.headers['set-cookie'];
 
