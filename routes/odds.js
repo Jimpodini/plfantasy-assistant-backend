@@ -30,14 +30,11 @@ router.post('/', async (req, res) => {
 			let gameOdds = game.sites.filter((s) => s['site_key'] === 'bet365');
 
 			gameOdds = gameOdds.length == 0 ? [ 'TBA', 'TBA' ] : gameOdds[0].odds.h2h;
-			//[0].odds.h2h;
 
 			let object = { teams: teams, odds: gameOdds };
 
 			allOdds = [ ...allOdds, object ];
 		}
-
-		console.log(allOdds);
 
 		try {
 			if (allOdds.length > 0) {
@@ -48,7 +45,6 @@ router.post('/', async (req, res) => {
 			console.log(err);
 			res.send('Could not update odds');
 		}
-		//res.send(allOdds);
 	} catch (err) {
 		console.log('catch block');
 		console.log(err, err.message);

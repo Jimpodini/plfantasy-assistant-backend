@@ -18,7 +18,6 @@ router.delete('/', async (req, res) => {
 router.post('/', async (req, res) => {
 	Update.deleteMany({}).catch((err) => console.log(err));
 	const update = new Update({ lastUpdated: new Date() });
-	//console.log(new Date());
 	await update.save();
 	res.send(update);
 });

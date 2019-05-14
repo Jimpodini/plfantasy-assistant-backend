@@ -3,7 +3,6 @@ const router = express.Router();
 var request = require('request');
 
 router.get('/', async (req, res) => {
-	//console.log(req.query);
 	const username = req.query.username;
 	const password = req.query.password;
 	let options = {
@@ -30,7 +29,6 @@ router.get('/', async (req, res) => {
 			return;
 		}
 
-		////// hej
 		const cookie = response.headers['set-cookie'];
 
 		let options = {
@@ -47,7 +45,6 @@ router.get('/', async (req, res) => {
 			if (error) throw new Error(error);
 
 			const teamID = body.match(/a\/team\/(.*?)\/event/i)[1];
-			//res.send(teamID);
 
 			let options = {
 				method: 'GET',
@@ -89,8 +86,6 @@ router.get('/', async (req, res) => {
 				});
 			});
 		});
-
-		//////// hej
 	});
 });
 
