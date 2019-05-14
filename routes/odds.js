@@ -37,9 +37,18 @@ router.post('/', async (req, res) => {
 			allOdds = [ ...allOdds, object ];
 		}
 
-		Odds.collection.insertMany(allOdds);
+		console.log(allOdds);
 
-		res.send(allOdds);
+		try {
+			if (allOdds.length > 0) {
+				Odds.collection.insertMany(allOdds);
+				res.send(allOdds);
+			}
+		} catch (err) {
+			console.log(err);
+			res.send('Could not update odds');
+		}
+		//res.send(allOdds);
 	} catch (err) {
 		console.log('catch block');
 		console.log(err, err.message);
